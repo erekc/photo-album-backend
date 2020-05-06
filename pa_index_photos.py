@@ -1,3 +1,7 @@
+"""
+This lambda indexes a photo into ElasticSearch.
+"""
+
 import sys
 sys.path.append("./packages")
 import boto3
