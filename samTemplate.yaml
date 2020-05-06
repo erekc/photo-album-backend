@@ -5,7 +5,7 @@ Resources:
   pasearchphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
-      FunctionName: pa-search-photos
+      FunctionName: pa-search-photos-cp
       Handler: pa_search_photos.lambda_handler
       Runtime: python3.8
       CodeUri: .
@@ -25,7 +25,7 @@ Resources:
   paindexphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
-      FunctionName: pa-index-photos
+      FunctionName: pa-index-photos-cp
       Handler: pa_index_photos.lambda_handler
       Runtime: python3.8
       CodeUri: .
