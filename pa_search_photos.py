@@ -1,3 +1,5 @@
+import sys
+sys.path.append("./packages")
 import boto3
 import requests
 import json
