@@ -1,3 +1,7 @@
+"""
+This lambda function searches ElasticSearch for photos matching the query.
+"""
+
 import sys
 sys.path.append("./packages")
 import boto3
