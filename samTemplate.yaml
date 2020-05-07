@@ -3,7 +3,7 @@ Transform: 'AWS::Serverless-2016-10-31'
 Description: Photo Album Lambdas
 Resources:
   IndexingPolicy:
-    Type: AWS::IAM::ROLE
+    Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
         Version: 2012-10-17
