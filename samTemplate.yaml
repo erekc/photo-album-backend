@@ -4,19 +4,20 @@ Description: Photo Album Lambdas
 Resources:
   Bucket1:
     Type: 'AWS::S3::Bucket'
-    BucketName: new-pa-b2
-    PublicAccessBlockConfiguration:
-      BlockPublicAcls: FALSE
-      BlockPublicPolicy: FALSE
-      IgnorePublicAcls: FALSE
-      RestrictPublicBuckets: FALSE
-    CorsConfiguration:
-      CorsRules:
-        - - AllowedHeaders: "*"
-            AllowedMethods: "POST,GET,DELETE,PUT,HEAD"
-            AllowedOrigins: "*"
-            ExposedHeaders: "Content-Range,Content-Length,ETag"
-            MaxAge: 3000
+    Properties:
+      BucketName: new-pa-b2
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: FALSE
+        BlockPublicPolicy: FALSE
+        IgnorePublicAcls: FALSE
+        RestrictPublicBuckets: FALSE
+      CorsConfiguration:
+        CorsRules:
+          - - AllowedHeaders: "*"
+              AllowedMethods: "POST,GET,DELETE,PUT,HEAD"
+              AllowedOrigins: "*"
+              ExposedHeaders: "Content-Range,Content-Length,ETag"
+              MaxAge: 3000
   Bucket1Policy:
     Type: AWS::S3::BucketPolicy
     Properties:
@@ -32,6 +33,12 @@ Resources:
              - { PhotoBucket: !Ref Bucket1 }
             Principal: '*'
             Sid: PublicReadGetObject
+  APIPA:
+    Type: AWS::Serverless::Api
+    Properties:
+      DefinitionBody:
+        Bucket: pa-lambda-pipeline
+        Key: AI-Photo-Search-PA-Query3-oas30-apigateway.yaml
   pasearchphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
@@ -52,6 +59,7 @@ Resources:
             RequestParameters:
               - method.request.querystring.q:
                   Required: TRUE
+            RestApiId: !Ref APIPA
       Environment:
         Variables:
           REGION: us-east-1
