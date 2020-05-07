@@ -36,8 +36,8 @@ Resources:
   APIPA:
     Type: AWS::Serverless::Api
     Properties:
+      StageName: PAQ
       DefinitionBody:
-        StageName: PAQ
         Bucket: pa-lambda-pipeline
         Key: AI-Photo-Search-PA-Query3-oas30-apigateway.yaml
   pasearchphotos:
