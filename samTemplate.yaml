@@ -71,9 +71,6 @@ Resources:
               - method.request.querystring.q:
                   Required: TRUE
             RestApiId: !Ref APIPA
-      Environment:
-        Variables:
-          REGION: us-east-1
   paindexphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
@@ -96,8 +93,5 @@ Resources:
                 Rules:
                   - Name: prefix
                     Value: photos/
-      Environment:
-        Variables:
-          REGION: us-east-1
   
           
