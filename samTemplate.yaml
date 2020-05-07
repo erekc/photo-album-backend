@@ -89,7 +89,7 @@ Resources:
         BucketEvent1:
           Type: S3
           Properties:
-            Bucket: !Ref Bucket1
+            Bucket: npab2
             Events: s3:ObjectCreated:Put
             Filter:
               S3Key:
