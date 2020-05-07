@@ -3,9 +3,9 @@ Transform: 'AWS::Serverless-2016-10-31'
 Description: Photo Album Lambdas
 Resources:
   Bucket1:
-    Type: 'AWS::S3::Bucket'
+    Type: AWS::S3::Bucket
     Properties:
-      BucketName: new-pa-b2
+      BucketName: NPAB2
       PublicAccessBlockConfiguration:
         BlockPublicAcls: FALSE
         BlockPublicPolicy: FALSE
@@ -90,8 +90,7 @@ Resources:
           Type: S3
           Properties:
             Bucket: !Ref Bucket1
-            Events:
-              - 's3:ObjectCreated:Put'
+            Events: s3:ObjectCreated:Put
             Filter:
               S3Key:
                 Rules:
