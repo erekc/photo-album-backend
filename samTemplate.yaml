@@ -30,9 +30,7 @@ Resources:
               Action:
                 - logs:CreateLogStream
                 - logs:PutLogEvents
-              Resource: !Sub 
-                - arn:aws:logs:us-east-1:${AWS::AccountId}:log-group:/aws/lambda/${Lambda}:*
-                - { Lambda: !Ref paindexphotos }
+              Resource: arn:aws:logs:us-east-1:${AWS::AccountId}:log-group:/aws/lambda/pa-index-photos-cp:*
   Bucket1:
     Type: AWS::S3::Bucket
     Properties:
