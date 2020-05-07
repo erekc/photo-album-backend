@@ -58,26 +58,27 @@ Resources:
       RestrictPublicBuckets: FALSE
     CorsConfiguration:
       CorsRules:
-        - AllowedHeaders:
-            - '*'
-          AllowedMethods:
-            - POST
-            - GET
-            - DELETE
-            - PUT
-            - HEAD
-          AllowedOrigins:
-            - '*'
-          ExposedHeaders:
-            - Content-Range
-            - Content-Length
-            - ETag
-          MaxAge: 3000
+        - - AllowedHeaders:
+              - '*'
+            AllowedMethods:
+              - POST
+              - GET
+              - DELETE
+              - PUT
+              - HEAD
+            AllowedOrigins:
+              - '*'
+            ExposedHeaders:
+              - Content-Range
+              - Content-Length
+              - ETag
+            MaxAge: 3000
   Bucket1Policy:
     Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: !Ref Bucket1
       PolicyDocument:
+        Version: 2012-10-17
         Statement:
           - Action:
             - '*'
