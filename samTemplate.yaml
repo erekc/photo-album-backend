@@ -13,11 +13,11 @@ Resources:
         RestrictPublicBuckets: FALSE
       CorsConfiguration:
         CorsRules:
-          - - AllowedHeaders: "*"
-              AllowedMethods: "POST,GET,DELETE,PUT,HEAD"
-              AllowedOrigins: "*"
-              ExposedHeaders: "Content-Range,Content-Length,ETag"
-              MaxAge: 3000
+          - AllowedHeaders: "*"
+            AllowedMethods: "POST,GET,DELETE,PUT,HEAD"
+            AllowedOrigins: "*"
+            ExposedHeaders: "Content-Range,Content-Length,ETag"
+            MaxAge: 3000
   Bucket1Policy:
     Type: AWS::S3::BucketPolicy
     Properties:
