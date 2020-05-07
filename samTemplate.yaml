@@ -94,5 +94,11 @@ Resources:
                 Rules:
                   - Name: prefix
                     Value: photos/
-  
-          
+  LambdaInvokePermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      FunctionName: !GetAtt paindexphotos.Arn
+      Action: 'lambda:InvokeFunction'
+      Principal: 's3.amazonaws.com'
+      SourceAccount: !Sub ${AWS::AccountId}
+      SourceArn: !GetAtt Bucket1.Arn
