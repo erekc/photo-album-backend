@@ -49,6 +49,9 @@ Resources:
           Properties:
             Path: /search
             Method: GET
+            RequestParameters:
+              - method.request.querystring.q:
+                  Required: TRUE
       Environment:
         Variables:
           REGION: us-east-1
