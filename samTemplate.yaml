@@ -21,7 +21,7 @@ Resources:
         - arn:aws:iam::aws:policy/AmazonLexFullAccess
       Policies:
         - PolicyName: index-cloudwatch
-        - PolicyDocument:
+          PolicyDocument:
             Version: 2012-10-17
             Statement:
               - Effect: Allow
