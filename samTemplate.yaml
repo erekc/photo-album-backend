@@ -11,7 +11,7 @@ Resources:
           - Effect: Allow
             Principal:
               Service: lambda.amazonaws.com
-            Action: sts.AssumeRole
+            Action: sts:AssumeRole
       Description: Role for pa-index-photos-cp
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonEC2FullAccess
