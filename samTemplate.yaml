@@ -2,6 +2,36 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: Photo Album Lambdas
 Resources:
+  Bucket1:
+    Type: 'AWS::S3::Bucket'
+    BucketName: new-pa-b2
+    PublicAccessBlockConfiguration:
+      BlockPublicAcls: FALSE
+      BlockPublicPolicy: FALSE
+      IgnorePublicAcls: FALSE
+      RestrictPublicBuckets: FALSE
+    CorsConfiguration:
+      CorsRules:
+        - - AllowedHeaders: "*"
+            AllowedMethods: "POST,GET,DELETE,PUT,HEAD"
+            AllowedOrigins: "*"
+            ExposedHeaders: "Content-Range,Content-Length,ETag"
+            MaxAge: 3000
+  Bucket1Policy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Bucket1
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+            - '*'
+            Effect: Allow
+            Resource: !Sub
+             - arn:aws:s3:::${PhotoBucket}/*
+             - { PhotoBucket: !Ref Bucket1 }
+            Principal: '*'
+            Sid: PublicReadGetObject
   pasearchphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
@@ -48,35 +78,5 @@ Resources:
       Environment:
         Variables:
           REGION: us-east-1
-  Bucket1:
-    Type: 'AWS::S3::Bucket'
-    BucketName: new-pa-b2
-    PublicAccessBlockConfiguration:
-      BlockPublicAcls: FALSE
-      BlockPublicPolicy: FALSE
-      IgnorePublicAcls: FALSE
-      RestrictPublicBuckets: FALSE
-    CorsConfiguration:
-      CorsRules:
-        - - AllowedHeaders: "*"
-            AllowedMethods: "POST,GET,DELETE,PUT,HEAD"
-            AllowedOrigins: "*"
-            ExposedHeaders: "Content-Range,Content-Length,ETag"
-            MaxAge: 3000
-  Bucket1Policy:
-    Type: AWS::S3::BucketPolicy
-    Properties:
-      Bucket: !Ref Bucket1
-      PolicyDocument:
-        Version: 2012-10-17
-        Statement:
-          - Action:
-            - '*'
-            Effect: Allow
-            Resource: !Sub
-             - arn:aws:s3:::${PhotoBucket}/*
-             - { PhotoBucket: !Ref Bucket1 }
-            Principal: '*'
-            Sid: PublicReadGetObject
   
           
