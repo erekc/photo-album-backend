@@ -59,7 +59,7 @@ Resources:
     CorsConfiguration:
       CorsRules:
         AllowedHeaders:
-          - *
+          - '*''
         AllowedMethods:
           - POST
           - GET
@@ -67,7 +67,7 @@ Resources:
           - PUT
           - HEAD
         AllowedOrigins:
-          - *
+          - '*''
         ExposedHeaders:
           - Content-Range
           - Content-Length
@@ -80,12 +80,12 @@ Resources:
       PolicyDocument:
         Statement:
           - Action:
-            - *
+            - '*''
             Effect: Allow
             Resource: !Sub
              - arn:aws:s3:::${PhotoBucket}/*
              - { PhotoBucket: !Ref Bucket1 }
-            Principal: *
+            Principal: '*''
             Sid: PublicReadGetObject
   
           
