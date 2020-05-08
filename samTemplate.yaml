@@ -56,7 +56,7 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonEC2FullAccess
         - arn:aws:iam::aws:policy/AmazonS3FullAccess
-        - arn:aws:iam::aws:policy/AWSLambdaVPCAccessExecutionRole
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
         - arn:aws:iam::aws:policy/AmazonESFullAccess
         - arn:aws:iam::aws:policy/AmazonLexFullAccess
         - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess
