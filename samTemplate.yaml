@@ -22,20 +22,6 @@ Resources:
         - arn:aws:iam::aws:policy/AmazonLexFullAccess
         - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess
         - arn:aws:iam::aws:policy/AmazonEC2ContainerServiceFullAccess
-      # Policies:
-      #   - PolicyName: index-cloudwatch
-      #     PolicyDocument:
-      #       Version: 2012-10-17
-      #       Statement:
-      #         - Effect: Allow
-      #           Action: logs:CreateLogGroup
-      #           Resource: !Sub arn:aws:logs:us-east-1:${AWS::AccountId}:*
-      #         - Effect: Allow
-      #           Action:
-      #             - logs:CreateLogStream
-      #             - logs:PutLogEvents
-      #           Resource: 
-      #             - !Sub arn:aws:logs:us-east-1:${AWS::AccountId}:log-group:/aws/lambda/pa-index-photos-cp:*
   IndexManagedPolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:

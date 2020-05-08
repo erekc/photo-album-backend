@@ -36,7 +36,7 @@ def lambda_handler(event, context):
     print(photo)
     image = {
         "S3Object": {
-            "Bucket": "pa-b2",
+            "Bucket": "npab2",
             "Name": photo
         }
     }
