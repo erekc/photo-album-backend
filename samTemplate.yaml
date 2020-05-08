@@ -142,7 +142,7 @@ Resources:
       SourceAccount: !Sub ${AWS::AccountId}
       SourceArn: !GetAtt Bucket1.Arn
   PhotoElasticSearch:
-    Type: 'AWS::Elasticsearch::Domain',
+    Type: 'AWS::Elasticsearch::Domain'
     Properties:
       DomainName: photos,
       ElasticsearchVersion: '7.4'
