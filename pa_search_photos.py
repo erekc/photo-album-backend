@@ -62,7 +62,7 @@ def lambda_handler(event, context):
     
     print("Connecting to ElasticSearch")
     es_client = ElasticSearchClient(
-        "search-pa-photos-tejbu3ru6einccfmr2l2wssmau.us-east-1.es.amazonaws.com",
+        "search-photos-p4ne3sqntzexapakksp6xtiiw4.us-east-1.es.amazonaws.com",
         "us-east-1"
     )
     print("Connected to ElasticSearch")
