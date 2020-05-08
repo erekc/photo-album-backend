@@ -144,7 +144,7 @@ Resources:
   PhotoElasticSearch:
     Type: 'AWS::Elasticsearch::Domain'
     Properties:
-      DomainName: photos,
+      DomainName: photos
       ElasticsearchVersion: '7.4'
       AccessPolicies:
         Version: 2012-10-17
