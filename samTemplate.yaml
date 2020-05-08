@@ -175,6 +175,7 @@ Resources:
         DedicatedMasterCount: 3
         ZoneAwarenessConfig:
           AvailabilityZoneCount: 1
+        ZoneAwarenessEnabled: TRUE
       EBSOptions:
         EBSEnabled: TRUE
         VolumeSize: 10
