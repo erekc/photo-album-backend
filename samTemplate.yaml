@@ -25,7 +25,7 @@ Resources:
   IndexManagedPolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
-      Description: Mnaged policy for indexing lambda
+      Description: Managed policy for indexing lambda
       Path: /service-role/
       Roles:
         - !Ref IndexingPolicy
@@ -41,6 +41,45 @@ Resources:
               - logs:PutLogEvents
             Resource: 
               - !Sub arn:aws:logs:us-east-1:${AWS::AccountId}:log-group:/aws/lambda/pa-index-photos-cp:*
+  SearchingPolicy:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Description: Role for pa-search-photos-cp
+      Path: /service-role/
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/AWSLambdaVPCAccessExecutionRole
+        - arn:aws:iam::aws:policy/AmazonESFullAccess
+        - arn:aws:iam::aws:policy/AmazonLexFullAccess
+        - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess
+        - arn:aws:iam::aws:policy/AmazonEC2ContainerServiceFullAccess
+  SearchManagedPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      Description: Managed policy for searching lambda
+      Path: /service-role/
+      Roles:
+        - !Ref SearchingPolicy
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action: logs:CreateLogGroup
+            Resource: !Sub arn:aws:logs:us-east-1:${AWS::AccountId}:*
+          - Effect: Allow
+            Action:
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+            Resource: 
+              - !Sub arn:aws:logs:us-east-1:${AWS::AccountId}:log-group:/aws/lambda/pa-search-photos-cp:*
   Bucket1:
     Type: AWS::S3::Bucket
     Properties:
@@ -99,7 +138,7 @@ Resources:
       Description: 'Lambda for searching photos'
       MemorySize: 128
       Timeout: 30
-      Role: 'arn:aws:iam::637817358320:role/service-role/pa-search-photos-role-1jccqcif'
+      Role: !GetAtt SearchingPolicy.Arn
       Events:
         Api1:
           Type: Api
