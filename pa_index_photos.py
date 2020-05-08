@@ -53,7 +53,7 @@ def lambda_handler(event, context):
     
     es_photo_object = {
         "objectkey": photo,
-        "bucket": "pa-b2",
+        "bucket": "npab2",
         "cretedTimestamp": str(time.time()),
         "labels": labels
     }
